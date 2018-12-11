@@ -1,0 +1,26 @@
+.container{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}
+
+form{
+    display:  grid;
+    grid-template-areas: "emaillbl email" "passwordlbl password" "btn btn";
+    grid-template-columns: 30% 70%;
+    grid-gap: 7px;
+
+}
+
+#emaillbl{
+    grid-area: emaillbl;
+}
+#email{
+    grid-area: email;
+}
+#passwordlbl{
+    grid-area: passwordlbl;
+}
+#password{
+    grid-area: password;
+}

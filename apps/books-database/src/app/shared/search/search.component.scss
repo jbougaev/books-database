@@ -1,0 +1,47 @@
+@import "../../../../src/assets/scss/variables.scss";
+@import "../../../../src/assets/scss/media-type-mixin.scss";
+.search-container {
+  width: 100%;
+  overflow: hidden;
+  > div {
+    overflow: hidden;
+    display: flex;
+    position: relative;
+  }
+  .search-container_input-container {
+    float: left;
+    width: 100%;
+  }
+  .search-container_search-btn {
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+  }
+  .search-container_search-input {
+    width: 95%;
+    height: 33px;
+    padding: 0;
+    border: 1px solid $border-color;
+    outline: none;
+    padding-left: 5px;
+  }
+}
+@include get-m-query(large) {
+  .search-container {
+    width: 100%;
+    overflow: hidden;   
+  }
+  .search-container_input-container {
+    float: left;
+    width: 80%;
+  }
+  .search-container_search-btn {
+    float: right;
+    width: 19%;
+  }
+}

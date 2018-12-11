@@ -1,0 +1,145 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "books-database": {
+      "root": "apps/books-database/",
+      "sourceRoot": "apps/books-database/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "prefix": "app",
+          "styleext": "scss"
+        },
+        "@schematics/angular:directive": {
+          "prefix": "app"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/books-database",
+            "index": "apps/books-database/src/index.html",
+            "main": "apps/books-database/src/main.ts",
+            "polyfills": "apps/books-database/src/polyfills.ts",
+            "tsConfig": "apps/books-database/tsconfig.app.json",
+            "assets": [
+              "apps/books-database/src/favicon.ico",
+              "apps/books-database/src/assets"
+            ],
+            "styles": [
+              "apps/books-database/src/assets/scss/main.scss",
+              "node_modules/font-awesome/css/font-awesome.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/books-database/src/environments/environment.ts",
+                  "with": "apps/books-database/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "books-database:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "books-database:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "books-database:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/books-database/src/test.ts",
+            "polyfills": "apps/books-database/src/polyfills.ts",
+            "tsConfig": "apps/books-database/tsconfig.spec.json",
+            "karmaConfig": "apps/books-database/karma.conf.js",
+            "styles": [
+              "apps/books-database/src/assets/scss/main.scss",
+              "node_modules/font-awesome/css/font-awesome.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/books-database/src/favicon.ico",
+              "apps/books-database/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/books-database/tsconfig.app.json",
+              "apps/books-database/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "books-database-e2e": {
+      "root": "apps/books-database-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/books-database-e2e/protractor.conf.js",
+            "devServerTarget": "books-database:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "books-database:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/books-database-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  },
+  "defaultProject": "books-database"
+ 
+}

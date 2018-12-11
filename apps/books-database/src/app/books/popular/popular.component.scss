@@ -1,0 +1,12 @@
+.carusel-container {
+  min-height: 100%;
+  width: 100%;
+  margin: 0 auto;
+
+  >div:first-child{
+    margin-bottom:10px;
+  }
+}
+.carusel-container__title{
+  margin-bottom: 1em;
+}

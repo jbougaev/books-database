@@ -1,0 +1,43 @@
+@import "./variables.scss";
+html, body {
+  color: $font-color;
+  font-size: 16px;
+}
+
+ul, ol, dl {
+  margin: 0;
+  padding: 0;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color:inherit;
+}
+a.active-link {
+  color: $green;
+}
+.bigger-font{
+  font-size:1.5em;
+}
+.disabled{
+  opacity: 0.5;  
+}
+.invalid-cntr, .invalid-cntr:focus{
+  border: 1px solid red;
+  outline: none;
+}
+.text-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;  
+  word-break: break-word; 
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+

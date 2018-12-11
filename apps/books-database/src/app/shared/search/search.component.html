@@ -1,0 +1,6 @@
+<div class="search-container">
+  <div>
+    <div class="search-container_input-container"><input type="text" class="search-container_search-input" (change)="true" #queryInput (keyup)="onKey($event)" /></div>
+    <div class="search-container_search-btn"><a [routerLink]="['/books/search', queryInput.value]"><i class="fa fa-search"></i></a></div>
+  </div>
+</div>

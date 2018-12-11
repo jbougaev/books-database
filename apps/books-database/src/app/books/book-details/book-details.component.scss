@@ -1,0 +1,96 @@
+@import "../../../../src/assets/scss/mixins.scss";
+@import "../../../../src/assets/scss/media-type-mixin.scss";
+@import "../../../../src/assets/scss/variables.scss";
+
+.book-details__container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 2.5em auto auto;
+  grid-template-areas: "header" "details" "image";
+  padding: 0.5em;
+}
+
+.book-details__form {
+  padding-bottom: 5px;
+}
+
+.book-details__image-container {
+  grid-area: image;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.book-details__details {
+  grid-area: details; 
+}
+
+.book-details__btns-container {
+  grid-area: header;
+
+  .book-details__edit-icon {
+    float: right;
+    margin: 0.2em 0.4em;
+    cursor: pointer;
+  }
+
+  .book-details__submit {
+    background: transparent;
+    color: $black;
+    border-color: transparent;
+    height: 2em;
+    width: 2em;
+    text-shadow: none;
+    display: inline;
+    float: right;
+    margin: 0.2em 0.4em;
+    cursor: pointer;
+
+    &.disabled {
+      cursor: default;
+    }
+  }
+}
+
+.book-details__details-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 0.5em;
+  grid-template-rows: 2.1em 2em 2em 2em 2em 2em 2em;
+}
+
+.book-details__error {
+  color: $red;
+  font-size: 0.8em;
+}
+
+.book-details__editable-input {
+  width: 100%;
+}
+
+@include get-m-query(large) {
+  .book-details__container {
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 2.1em auto;
+    grid-template-areas: "image header" "image details";
+  }
+
+  .book-details__editable-input {
+    width: 30em;
+  }
+
+  .book-details__details {
+
+    padding-left: 1em;
+  }
+}
+
+.book-details__ddl{
+  width: 98%;
+}
+
+  

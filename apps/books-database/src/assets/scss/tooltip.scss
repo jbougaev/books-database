@@ -1,0 +1,20 @@
+@import "./variables.scss";
+
+.tooltip {
+  border-radius: 0px !important;
+  background-color: $border-color !important;
+  -webkit-transition: opacity 1ms !important;
+  -moz-transition: opacity 1ms !important;
+  -o-transition: opacity 1ms !important;
+  transition: opacity 1ms !important;
+  font-size: 0.7em !important;
+}
+
+.tooltip-top.tooltip-light[_nghost-c7] {
+   margin-top: 0 !important; 
+}
+
+.tooltip-arrow, .tooltip::after, .tooltip-top::after, .tooltip-bottom::after, .tooltip-left::after, .tooltip-right::after,
+.tooltip-light::after, .tooltip-arrow::after {
+  display: none !important;
+}

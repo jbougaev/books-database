@@ -1,0 +1,189 @@
+<form [formGroup]="bookDetailsFormGroup" (ngSubmit)="submit()" novalidate class="book-details__form">
+  <div class="book-details__container">
+    <div class="book-details__btns-container">
+      <button type="button" class="book-details__submit" (click)="resetBook()"
+              [disabled]=" !inEditMode" 
+              [ngClass]="{'disabled':  !inEditMode}">
+        <i class="fa fa-remove fa-2x"></i>
+      </button>
+      <button type="submit" class="book-details__submit"
+              [disabled]="bookDetailsFormGroup.invalid || !inEditMode" 
+              [ngClass]="{'disabled': bookDetailsFormGroup.invalid || !inEditMode}">
+        <i class="fa fa-save fa-2x"></i>
+      </button>
+    </div>
+    <div class="book-details__image-container">
+      <img src="../../assets/{{book?.imageLink}}">
+    </div>
+    <div class="book-details__details">
+      <div class="book-details__details-container">
+        <div>
+          <strong>   Title:</strong>
+        </div>
+        <div>
+          <div class="book-details__editable-input">
+             <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                
+                                     [propertyNm]="'title'"
+                                     [invalid]="bookDetailsFormGroup.get('title').hasError('required') && bookDetailsFormGroup.get('title').touched"
+                                     (editModeChange)="changeEditMode($event)">
+            </app-editable-text-input> 
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('title').hasError('required') && bookDetailsFormGroup.get('title').touched">
+            Title is required
+          </div>
+        </div>
+        <div>
+          <strong> Author:</strong>
+        </div>
+        <div>
+          <div class="book-details__editable-input">
+            <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                    
+                                     [propertyNm]="'author'"
+                                     [invalid]="bookDetailsFormGroup.get('author').hasError('required') && bookDetailsFormGroup.get('author').touched"
+                                     (editModeChange)="changeEditMode($event)">
+
+            </app-editable-text-input>
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('author').hasError('required') && bookDetailsFormGroup.get('author').touched">
+            Author is required
+          </div>
+        </div>
+        <div>
+          <strong>   Year:</strong>
+        </div>
+        <div>
+          <div class="book-details__editable-input">
+            <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                    
+                                     [propertyNm]="'year'"
+                                     [invalid]="(bookDetailsFormGroup.get('year').hasError('required') ||  bookDetailsFormGroup.get('year').hasError('pattern')) && bookDetailsFormGroup.get('year').touched"
+                                     (editModeChange)="changeEditMode($event)">
+
+            </app-editable-text-input>
+          </div>
+          <div class="book-details__error" *ngIf="(bookDetailsFormGroup.get('year').hasError('required') ||  bookDetailsFormGroup.get('year').hasError('pattern')) && bookDetailsFormGroup.get('year').touched">
+            Year is required
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('year').hasError('pattern') && bookDetailsFormGroup.get('year').touched">
+            Year should be a positive number
+          </div>
+        </div>
+        <div>
+          <strong>Genre:</strong>
+        </div>
+        <div>
+
+          <div>
+             <select  [formGroup]="bookDetailsFormGroup" formControlName = "genre" class="book-details__ddl" (change)="changeEditMode(true)">
+              <option *ngFor="let g of genresList$ | async" [ngValue]="g.id">{{g.name}}</option>
+            </select> 
+            <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('genre').hasError('required') && bookDetailsFormGroup.get('genre').touched">
+              Genre is required
+            </div> 
+          </div>
+        </div>
+        <div>
+          <strong> Language:</strong>
+        </div>
+        <div>
+
+          <div>
+            <select  [formGroup]="bookDetailsFormGroup" formControlName = "language" class="book-details__ddl" (change)="changeEditMode(true)">
+             <option *ngFor="let l of languagesList$ | async" [ngValue]="l.id">{{l.name}}</option>
+           </select> 
+           <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('language').hasError('required') && bookDetailsFormGroup.get('language').touched">
+            Language is required
+           </div> 
+         </div>
+        </div>
+        <div>
+          <strong>Country:</strong>
+        </div>
+        <div>
+          <div class="book-details__editable-input">
+            <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                    
+                                     [propertyNm]="'country'"
+                                     [invalid]="bookDetailsFormGroup.get('country').hasError('required') && bookDetailsFormGroup.get('country').touched"
+                                     (editModeChange)="changeEditMode($event)">
+
+            </app-editable-text-input>
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('country').hasError('required') && bookDetailsFormGroup.get('country').touched">
+            Country is required
+          </div>
+        </div>
+        <div>
+          <strong>Pages:</strong>
+        </div>
+        <div>
+          <div class="book-details__editable-input">
+            <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                    
+                                     [propertyNm]="'pages'"
+                                     [invalid]="(bookDetailsFormGroup.get('pages').hasError('required') ||  bookDetailsFormGroup.get('pages').hasError('pattern')) && bookDetailsFormGroup.get('pages').touched"
+                                     (editModeChange)="changeEditMode($event)">
+
+            </app-editable-text-input>
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('pages').hasError('required') && bookDetailsFormGroup.get('pages').touched">
+            Number of pages is required
+          </div>
+          <div class="book-details__error" *ngIf="bookDetailsFormGroup.get('pages').hasError('pattern') && bookDetailsFormGroup.get('pages').touched">
+            Pages should be a positive number
+          </div>
+        </div>
+        <div>
+          <strong>Link:</strong>
+        </div>
+        <div>
+          <!--<span *ngIf="!editing"><a href="{{book?.link}}" target="_blank">open a wiki</a></span>
+          <input type="text" formControlName="link" *ngIf="editing" />-->
+          <div class="book-details__editable-input">
+            <app-editable-text-input [form]="bookDetailsFormGroup"
+                                     [outerEditMode$] ="changeChildMode$"
+                                     [item]="book"
+                                    
+                                     [propertyNm]="'link'"
+                                     [invalid]="false"
+                                     (editModeChange)="changeEditMode($event)">
+            </app-editable-text-input>
+          </div>
+        </div>
+        <div>
+          <strong>   Is it audio book:</strong>
+        </div>
+        <div>
+          <input type="checkbox" (change)="changeEditMode(true)"
+                 formControlName="isAudio"
+                 (checked)="book?.isAudio" />
+        </div>
+        <div>
+          <strong>  Include to favourites:</strong>
+        </div>
+        <div> 
+          <input type="checkbox" (change)="changeEditMode(true)"
+                 formControlName="isPopular"
+                 (checked)="book?.isPopular" />
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</form>
+
+
+

@@ -1,0 +1,17 @@
+@import "../../../../src/assets/scss/variables.scss";
+.breadcrumbs li {
+  display: inline;
+}
+
+.breadcrumbs li + li:before {
+  content: " / ";  
+}
+
+.breadcrumbs {
+  color: $light-grey;
+  padding: 1.5em 0.5em;
+
+  a, a:visited, a:active {
+    color: $light-grey;
+  }
+}

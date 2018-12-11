@@ -1,0 +1,10 @@
+.a-tooltip-container{
+    position: absolute;
+    padding: 5px;
+   background-color: #eee;
+   font-size: 0.6em;
+   z-index: 10;
+   border: 1px solid #eee;
+   box-shadow: 0 2px 10px 1px rgba(0,0,0,.2), 0 1px 1px 1px rgba(0,0,0,.14), 0 1px 3px 1px rgba(0,0,0,.12);
+   transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+}

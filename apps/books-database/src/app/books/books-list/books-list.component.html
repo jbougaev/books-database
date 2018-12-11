@@ -1,0 +1,22 @@
+<div class="carusel-container">
+  <div class="carusel-container__title" *ngIf="books.length>0">
+    <span class="bigger-font">{{title}}</span>
+  </div>
+  <div class="carusel-container__books-container" >
+    <div class="carusel-container__book-card" *ngFor="let book of books" >
+      <div class="carusel-container__image-container">
+        <img [src]="'../../assets/' + book.imageLink" (click)="navigateToDetails(book)">
+        <div class="carusel-container__action-container">
+          <i class="fa fa-trash" aria-hidden="true" (click)="deleteBook(book)"></i>
+        </div>
+      </div>
+      <div class="carusel-container__card-title" (click)="navigateToDetails(book)">
+        <div class="carusel-container__book-card_author" >{{book.author}}</div>
+      </div>
+      <div class="carusel-container__card-title tooltip-container" (click)="navigateToDetails(book)">
+        <div class="carusel-container__book-card_title " app-tooltip="{{book.title}}">{{book.title}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+

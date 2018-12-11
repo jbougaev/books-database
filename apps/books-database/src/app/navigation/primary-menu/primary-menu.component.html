@@ -1,0 +1,27 @@
+<nav class="primary-nav">
+  <div class="primary-nav__logo"><a [routerLink]="['/books']" class="primary-nav__logo-link"></a></div>
+
+  <div class="primary-nav__primary-menu">
+    <ul>
+      <li class="primary-nav__primary-menu__item">
+        <a [routerLink]="['/books/paper']" routerLinkActive="active-link" class="primary-nav__primary-menu__link">Paper Books</a>
+      </li>
+      <li class="primary-nav__primary-menu__item">
+        <a [routerLink]="['/books/favourite']" routerLinkActive="active-link" class="primary-nav__primary-menu__link">Favorite</a>
+      </li>
+      <li class="primary-nav__primary-menu__item">
+        <a [routerLink]="['/books/audio']" routerLinkActive="active-link" class="primary-nav__primary-menu__link">Audio</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="primary-nav__search">
+    <app-search class="primary-nav__search-component"></app-search>
+  </div>
+  <div class="primary-nav__btns-container">
+  <div class=" primary-nav__btns"><i *ngIf="!isAuthenticated" class="fa fa-sign-in primary-nav__sign-in"
+      [routerLink]="['/signin']"></i></div>
+  <div class="primary-nav__btns"><i *ngIf="isAuthenticated" class="fa fa-sign-out primary-nav__sign-in" (click)="logout()"></i></div>
+  </div>
+</nav>
+<!--https://www.behance.net/featured-->

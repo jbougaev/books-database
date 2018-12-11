@@ -1,0 +1,5 @@
+ <div [formGroup]="form" (click)="toggleEditMode(true)" class="editable-text-input__container">
+  <span *ngIf="!innerEditMode"  class="text-wrap">{{editableProperty}}</span>  
+  <input type="text" formControlName="{{propertyNm}}" *ngIf="innerEditMode" [isFocus]="isFocus"
+         [ngClass]="{'invalid-cntr': invalid}" (blur)="toggleEditMode()" class="editable-text-input__input">
+</div>

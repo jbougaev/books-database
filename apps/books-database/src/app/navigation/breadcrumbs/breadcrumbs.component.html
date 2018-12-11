@@ -1,0 +1,7 @@
+<ol class="breadcrumbs">
+  <li *ngFor="let breadcrumb of breadcrumbs$ | async">
+    <a [routerLink]="[breadcrumb.url]" *ngIf="breadcrumb.url!==''">{{ breadcrumb.name }}</a>
+    <span *ngIf="breadcrumb.url===''">{{ breadcrumb.name }}</span>
+  </li>
+</ol>
+

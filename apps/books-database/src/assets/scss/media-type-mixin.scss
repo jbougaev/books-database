@@ -1,0 +1,14 @@
+@mixin get-m-query($size) {
+  $smartphones: 20em;/* smartphones, iPhone, portrait 480x320 phones */
+  $stablets: 30.063em; /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+  $ptablets: 40.063em; /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+  $tablets: 60.063em;  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  $blandscape: 64.063em;  /* big landscape tablets, laptops, and desktops */
+  $hiresdesktops: 80.063em; /* hi-res laptops and desktops */
+
+  @if $size == medium {
+    @media only screen and (min-width: $stablets) { @content; }
+  } @else if $size == large {
+    @media only screen and (min-width: $blandscape) { @content; }
+  }
+}

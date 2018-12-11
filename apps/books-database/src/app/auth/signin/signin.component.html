@@ -1,0 +1,13 @@
+<div class="container">
+    <form (ngSubmit)="onSignIn(f)" #f="ngForm">
+    
+        <label for="email" id="emaillbl">Mail</label>
+        <input type="email" id=email name=email ngModel />
+    
+        <label for="password" id="passwordlbl">Password</label>
+        <input type="password" id=password name=password ngModel />
+     
+      <button type=submit>Sign In</button>
+    </form>
+
+</div>
