@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./search-result.component.scss']
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
-  //books$ = this.searchFacade.searchResult$;
+
   books: Book[];
   audio: Book[];
   private subscription: Subscription;

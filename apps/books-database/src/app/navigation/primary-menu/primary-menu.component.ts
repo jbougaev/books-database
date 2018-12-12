@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthFacade } from '../../store';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-primary-menu',
   templateUrl: './primary-menu.component.html',
-  styleUrls: ['./primary-menu.component.scss']
+  styleUrls: ['./primary-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PrimaryMenuComponent implements OnInit {
   isAuthenticated: boolean;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../../store';
 import { BooksService } from "../books.service";
 import { filter, map } from "rxjs/operators";
@@ -19,7 +19,8 @@ import { filter, map } from "rxjs/operators";
         </div>
       </div>
   `,
-  styleUrls: ['./popular.component.scss']
+  styleUrls: ['./popular.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopularBooksComponent implements OnInit {
   books: Book[];

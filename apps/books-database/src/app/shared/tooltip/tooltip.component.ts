@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Directive, ElementRef, Inject, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 @Directive({
   selector: '.a-tooltip-container'
@@ -14,7 +14,8 @@ export class TooltipContainerDirective {
       </div>
     </div>
   `,
-  styleUrls: ['./tooltip.scss']
+  styleUrls: ['./tooltip.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TooltipComponent implements OnInit {
   top : string;

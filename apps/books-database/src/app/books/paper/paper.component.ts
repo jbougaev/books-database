@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../../store';
 import { BooksService } from "../books.service";
 import { filter, map } from "rxjs/operators";
@@ -14,7 +14,8 @@ import { filter, map } from "rxjs/operators";
       </div>
     </div>
   `,
-  styleUrls: ['./paper.component.scss']
+  styleUrls: ['./paper.component.scss'],
+ //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaperComponent implements OnInit {
   books: Book[];

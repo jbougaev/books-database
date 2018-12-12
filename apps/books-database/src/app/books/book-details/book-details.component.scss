@@ -4,6 +4,7 @@
 
 .book-details__container {
   display: grid;
+  grid-gap: 5px;
   grid-template-columns: 100%;
   grid-template-rows: 2.5em auto auto;
   grid-template-areas: "header" "details" "image";
@@ -67,20 +68,20 @@
 }
 
 .book-details__editable-input {
-  width: 100%;
+  width: 95%;
 }
 
 @include get-m-query(large) {
   .book-details__container {
     display: grid;
-    grid-gap: 5%;
+    
     grid-template-columns: 30% 70%;
     grid-template-rows: 2.1em auto;
     grid-template-areas: "image header" "image details";
   }
 
   .book-details__editable-input {
-    width: 30em;
+    width: 100%;
   }
 
   .book-details__details {
@@ -90,7 +91,7 @@
 }
 
 .book-details__ddl{
-  width: 98%;
+  width: 95%;
 }
 
   

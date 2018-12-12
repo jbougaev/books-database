@@ -1,11 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from "@angular/router";
 import { UtilitiesService } from "../../services/utilities.service";
 import { Book } from '../../store';
 @Component({
   selector: 'app-books-list',
   templateUrl: './books-list.component.html',
-  styleUrls: ['./books-list.component.scss']
+  styleUrls: ['./books-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BooksListComponent{
   @Input() books: Book[];

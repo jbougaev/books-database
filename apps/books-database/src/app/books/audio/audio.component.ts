@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../../store';
 import { BooksService } from "../books.service";
 import { filter, map} from "rxjs/operators";
@@ -13,7 +13,8 @@ import { filter, map} from "rxjs/operators";
       </div>
     </div>
   `,
-  styleUrls: ['./audio.component.scss']
+  styleUrls: ['./audio.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AudioBooksComponent implements OnInit {
   books: Book[];

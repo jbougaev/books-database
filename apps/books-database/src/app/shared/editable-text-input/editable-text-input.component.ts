@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { Book } from '../../store';
 import { FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -6,7 +6,8 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-editable-text-input',
   templateUrl: './editable-text-input.component.html',
-  styleUrls: ['./editable-text-input.component.scss']
+  styleUrls: ['./editable-text-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditableTextInputComponent implements OnChanges, OnInit, OnDestroy {
   @Input()
