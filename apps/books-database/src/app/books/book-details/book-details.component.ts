@@ -12,7 +12,7 @@ import { Observable, Subscription, Subject } from "rxjs";
 })
 export class BookDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
   book: Book;
-  bookSubscription: Subscription;
+  private bookSubscription: Subscription;
   genresList$: Observable<Genre[]> = this.genreFacade.allGenres$;
   languagesList$: Observable<Language[]> = this.languageFacade.allLanguages$;
   bookDetailsFormGroup: FormGroup;

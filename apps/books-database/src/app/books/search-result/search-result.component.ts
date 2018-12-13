@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BooksService } from "../books.service";
 import { Book } from '../../store';
@@ -22,17 +22,20 @@ import { Subscription } from 'rxjs';
       </div>
     </div>
   `,
-  styleUrls: ['./search-result.component.scss']
+  styleUrls: ['./search-result.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
 
   books: Book[];
   audio: Book[];
   private subscription: Subscription;
+  private searchResultsSubcriotion: Subscription;
   query: string;
   constructor(
     private route: ActivatedRoute,
-    private booksService: BooksService) { }
+    private booksService: BooksService,
+    private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {    
     this.subscription = this.route.params.subscribe(params => {
@@ -44,11 +47,13 @@ export class SearchResultComponent implements OnInit, OnDestroy {
       .subscribe((books: Book[]) => {
           this.books = books.filter(b => b.isAudio === false);
           this.audio = books.filter(b => b.isAudio === true);
+          this.changeDetectorRef.markForCheck();
         }
       );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.searchResultsSubcriotion.unsubscribe;
   }
 }

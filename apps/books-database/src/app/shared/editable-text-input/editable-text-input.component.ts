@@ -31,7 +31,7 @@ export class EditableTextInputComponent implements OnChanges, OnInit, OnDestroy 
   editableProperty: any;
   isFocus: boolean = false;
   innerEditMode: boolean = false;
-  outerEditModeSubscrb: Subscription;
+  private outerEditModeSubscrb: Subscription;
 
   ngOnInit() {
     this.outerEditModeSubscrb = this.outerEditMode$.subscribe((outerEditMode: boolean) => {

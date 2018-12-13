@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Book } from '../../store';
 import { BooksService } from "../books.service";
 import { filter, map } from "rxjs/operators";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-paper',
@@ -15,22 +16,30 @@ import { filter, map } from "rxjs/operators";
     </div>
   `,
   styleUrls: ['./paper.component.scss'],
- //changeDetection: ChangeDetectionStrategy.OnPush
+ changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaperComponent implements OnInit {
+export class PaperComponent implements OnInit, OnDestroy {
   books: Book[];
+  private booksSubscription: Subscription;
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService, private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.booksService.books$
+    this.booksSubscription = this.booksService.books$
       .pipe(map(books => books.filter(b => b.isAudio === false)))
-      .subscribe(books =>
-        this.books = books);
+      .subscribe(books =>{
+        this.books = books
+        this.changeDetectorRef.markForCheck();
+      }
+        );
   }
 
   deleteBook(book: Book) {
     this.booksService.deleteBook(book);
+  }
+
+  ngOnDestroy(){
+    this.booksSubscription.unsubscribe();
   }
 }
