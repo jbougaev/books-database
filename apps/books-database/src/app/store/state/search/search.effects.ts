@@ -23,7 +23,7 @@ export class SearchEffects {
           map((res: Book[]) => {
             let query = test.toLowerCase();
             return new SearchActions.SearchLoaded(res.filter(r =>
-              (r.author && r.author.toLowerCase().indexOf(query)) > -1 || (r.title && r.title.toLowerCase().indexOf(query) > -1))
+              (r.author && r.author.toLowerCase().indexOf(query)) > -1 || (r.title && r.title.toLowerCase().indexOf(query) > -1));
           }),
           catchError((error: any) => of(new SearchActions.LoadSearchError(error)))
         )

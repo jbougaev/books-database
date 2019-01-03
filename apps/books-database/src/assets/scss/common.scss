@@ -2,6 +2,8 @@
 html, body {
   color: $font-color;
   font-size: 16px;
+  font-family: 'Actor', sans-serif;
+  line-height: 1.15;
 }
 
 ul, ol, dl {
@@ -41,6 +43,9 @@ button{
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+.fa-1_5x {
+  font-size: 1.5em !important;
 }
 
 

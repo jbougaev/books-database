@@ -4,12 +4,12 @@
       <button type="button" class="book-details__submit" (click)="resetBook()"
               [disabled]=" !inEditMode" 
               [ngClass]="{'disabled':  !inEditMode}">
-        <i class="fa fa-remove fa-2x"></i>
+        <i class="fa fa-remove fa-1_5x"></i>
       </button>
       <button type="submit" class="book-details__submit"
               [disabled]="bookDetailsFormGroup.invalid || !inEditMode" 
               [ngClass]="{'disabled': bookDetailsFormGroup.invalid || !inEditMode}">
-        <i class="fa fa-save fa-2x"></i>
+        <i class="fa fa-save fa-1_5x"></i>
       </button>
     </div>
     <div class="book-details__image-container">

@@ -1,18 +1,35 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { take, map } from "rxjs/operators";
 
 import { AuthFacade } from '../store';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authFacade: AuthFacade) {}
+  constructor(private authFacade: AuthFacade, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.authFacade.authenticated$.pipe(
-      map(r => 
+      map(r =>
         r),
-      take(1));
+      take(1),
+      map(a => {
+        if (a) {
+          return true;
+        } else {
+
+          this.router.navigate(['/signin'], {
+            queryParams: {
+              return: state.url
+            }
+          });
+          return false;
+        }
+      }));
   }
 }
+
+
+
+
