@@ -40,6 +40,7 @@ export const effects =[
 export const selectAuthState = createFeatureSelector<fromAuth.AuthState>('auth');
 export const getAuthenticated = createSelector(selectAuthState, fromAuth.getAuthenticated);
 export const getToken = createSelector(selectAuthState, fromAuth.getToken);
+export const getError = createSelector(selectAuthState, fromAuth.getError);
 // -------------------------------------------------------------------
 // BookS SELECTORS
 // -------------------------------------------------------------------

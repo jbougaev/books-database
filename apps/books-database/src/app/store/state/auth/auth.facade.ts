@@ -12,6 +12,7 @@ import {Observable} from "rxjs";
 export class AuthFacade {
   authenticated$ : Observable<boolean> = this.store.pipe(select(Selectors.getAuthenticated));
   token$: Observable<string> = this.store.pipe(select(Selectors.getToken));
+  error$: Observable<string> = this.store.pipe(select(Selectors.getError));
 
   constructor(private store: Store<AuthState> ) {}
 

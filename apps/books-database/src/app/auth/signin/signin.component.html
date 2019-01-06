@@ -1,21 +1,27 @@
 <div class="container">
-    <form [formGroup]="signinFormGroup" (ngSubmit)="onSignIn()" >
-    
-        <label for="email" id="emaillbl">Mail</label>
+    <form [formGroup]="signinFormGroup" (ngSubmit)="onSignIn()">
+
+        <label for="email" id="emaillbl">Email</label>
         <input type="email" formControlName="email" id=email name=email ngModel />
-        <div class="input__error" *ngIf="signinFormGroup.controls.email.errors?.required && signinFormGroup.controls.email.touched">
-            Email is required
+        <div id="emailerror">
+            <div class="input__error" *ngIf="signinFormGroup.controls.email.errors?.required && signinFormGroup.controls.email.touched">
+                Email is required
+            </div>
+            <div class="input__error" *ngIf="signinFormGroup.controls.email.errors?.email && signinFormGroup.controls.email.touched">
+                Wrong email format
+            </div>
         </div>
-        <div class="input__error" *ngIf="signinFormGroup.controls.email.errors?.email && signinFormGroup.controls.email.touched">
-            Wrong email format
-        </div>
-    
+
         <label for="password" id="passwordlbl">Password</label>
         <input type="password" formControlName="password" id=password name=password ngModel />
-        <div class="input__error" *ngIf="signinFormGroup.controls.password.errors?.required && signinFormGroup.controls.password.touched">
+
+        <div id="passworderror" class="input__error" *ngIf="signinFormGroup.controls.password.errors?.required && signinFormGroup.controls.password.touched">
             Password is required
         </div>
-      <button type=submit [disabled]="signinFormGroup.invalid">Sign In</button>
-    </form>
 
+        <div class="input__error" id="errors">
+            {{error$ | async}}
+        </div>
+        <button type=submit [disabled]="signinFormGroup.invalid" id="btnSignIn">Sign In</button>
+    </form>
 </div>

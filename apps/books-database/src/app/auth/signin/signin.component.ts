@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthFacade } from '../../store';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-signin',
@@ -9,6 +10,7 @@ import { AuthFacade } from '../../store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SigninComponent implements OnInit {
+  error$: Observable<string> = this.authFacade.error$;
   signinFormGroup: FormGroup;
   constructor(private authFacade: AuthFacade, private formBuilder: FormBuilder) { }
 

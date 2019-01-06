@@ -6,7 +6,7 @@
 
 form{
     display:  grid;
-    grid-template-areas: "emaillbl email" "passwordlbl password" "btn btn";
+    grid-template-areas: "emaillbl email" "emailerror emailerror" "passwordlbl password" "passworderror passworderror" "error error" "btn btn";
     grid-template-columns: 30% 70%;
     grid-gap: 7px;
 
@@ -23,4 +23,20 @@ form{
 }
 #password{
     grid-area: password;
+}
+
+#errors{
+    grid-area: error;
+}
+
+#btnSignIn{
+    grid-area: btn;
+}
+
+#emailerror{
+    grid-area: emailerror;
+}
+
+#passworderror{
+    grid-area: passworderror;
 }

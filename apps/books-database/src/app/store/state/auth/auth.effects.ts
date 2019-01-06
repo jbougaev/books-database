@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
-import { map, switchMap, catchError, mergeMap, tap } from 'rxjs/operators';
+import { switchMap,tap, catchError } from 'rxjs/operators';
 import { AuthService } from "../../models/auth/auth.service";
 import * as AuthActions from './auth.actions';
+import { of} from "rxjs";
 
 @Injectable()
 export class AuthEffects {
@@ -27,6 +28,9 @@ export class AuthEffects {
                 payload: token.access_token
               }
             ];
+          }),
+          catchError((error) => {
+            return of({type: AuthActions.AuthActionTypes.SetError,error: error.error.message});
           })
 
         );
