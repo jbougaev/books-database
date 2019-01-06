@@ -31,8 +31,9 @@
               "apps/books-database/src/assets"
             ],
             "styles": [
-              "apps/books-database/src/assets/scss/main.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "apps/books-database/src/app/scss/styles.scss"
+              
             ],
             "scripts": []
           },
@@ -81,8 +82,8 @@
             "tsConfig": "apps/books-database/tsconfig.spec.json",
             "karmaConfig": "apps/books-database/karma.conf.js",
             "styles": [
-              "apps/books-database/src/assets/scss/main.scss",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "apps/books-database/src/app/scss/styles.scss"
             ],
             "scripts": [],
             "assets": [

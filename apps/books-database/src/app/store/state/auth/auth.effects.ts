@@ -14,24 +14,24 @@ export class AuthEffects {
   authSignin = this.actions$
     .pipe(
       ofType(AuthActions.AuthActionTypes.TrySignin),
-      map((action: AuthActions.TrySignup) => {
-        return action.payload;
-      }),
-      switchMap((authData: { email: string, password: string }) => {
-        return this.authService.getToken(authData.email, authData.password);
-      }),
-      mergeMap((token: any) => {
-        this.router.navigate(['/']);
-        return [
-          {
-            type: AuthActions.AuthActionTypes.Signin
-          },
-          {
-            type: AuthActions.AuthActionTypes.SetToken,
-            payload: token.access_token
-          }
-        ];
-      }));
+      switchMap((action: AuthActions.TrySignup) => {
+        return this.authService.getToken(action.payload.email, action.payload.password).pipe(
+          switchMap((token: any) => {
+            this.router.navigate(['/']);
+            return [
+              {
+                type: AuthActions.AuthActionTypes.Signin
+              },
+              {
+                type: AuthActions.AuthActionTypes.SetToken,
+                payload: token.access_token
+              }
+            ];
+          })
+
+        );
+      })
+    );
 
   @Effect({ dispatch: false })
   authLogout = this.actions$

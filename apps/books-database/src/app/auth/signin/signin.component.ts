@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthFacade } from '../../store';
 
 @Component({
@@ -9,14 +9,18 @@ import { AuthFacade } from '../../store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SigninComponent implements OnInit {
-
-  constructor(private authFacade: AuthFacade) { }
+  signinFormGroup: FormGroup;
+  constructor(private authFacade: AuthFacade, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.signinFormGroup = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', [Validators.required]]
+    });
   }
 
-  onSignIn(form: NgForm){
-     this.authFacade.signin(form.value.email, form.value.password);
+  onSignIn(){
+     this.authFacade.signin(this.signinFormGroup.value.email, this.signinFormGroup.value.password);
   }
 
 }
